@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+   <definition name="baseLayout"  template="/WEB-INF/views/common/layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="side" value="" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+	
+	<!-- 회원 전용 메인 -->
+   <definition name="/member/main" extends="baseLayout">
+      <put-attribute name="title" value="메인페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/main.jsp" />
+      <put-attribute name="side" value="/WEB-INF/views/common/memberSide.jsp" />
+   </definition>
+   
+   <!-- 관리자 전용 메인 -->
+   <definition name="/admin/main" extends="baseLayout">
+      <put-attribute name="title" value="메인페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/main.jsp" />
+      <put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
+   </definition>
+
+	<definition name="/member/loginForm" extends="baseLayout">
+      <put-attribute name="title" value="Memeber Login" />
+      <put-attribute name="body" value="/WEB-INF/views/member/loginForm.jsp" />
+      <put-attribute name="side" value="/WEB-INF/views/common/memberSide.jsp" />
+      
+   </definition>
+   <!-- 회원 전용 리스트 -->
+   	<definition name="/member/list" extends="baseLayout">
+      <put-attribute name="title" value="Member List" />
+      <put-attribute name="body" value="/WEB-INF/views/member/memberList.jsp" />
+      <put-attribute name="side" value="/WEB-INF/views/common/memberSide.jsp" />
+   </definition>
+   <!-- 관리자 전용 리스트 -->
+   <definition name="/admin/list" extends="baseLayout">
+      <put-attribute name="title" value="Member List" />
+      <put-attribute name="body" value="/WEB-INF/views/member/memberList.jsp" />
+   </definition>
+   
+   <definition name="/member/regist" extends="baseLayout">
+      <put-attribute name="title" value="Member Regist" />
+      <put-attribute name="body" value="/WEB-INF/views/member/memberRegist.jsp" />
+   </definition>
+   <!-- 회원 전용 상세 보기 -->
+   <definition name="/member/detail" extends="baseLayout">
+      <put-attribute name="title" value="Member Detail" />
+      <put-attribute name="body" value="/WEB-INF/views/member/memberDetail.jsp" />
+      <put-attribute name="side" value="/WEB-INF/views/common/memberSide.jsp" />
+   </definition>
+   <!-- 관리자 전용 상세 보기 -->
+   <definition name="/admin/detail" extends="baseLayout">
+      <put-attribute name="title" value="Member Detail" />
+      <put-attribute name="body" value="/WEB-INF/views/member/memberDetail.jsp" />
+   </definition>
+   
+   <definition name="/member/update" extends="baseLayout">
+      <put-attribute name="title" value="Member regist" />
+      <put-attribute name="body" value="/WEB-INF/views/member/memberUpdate.jsp" />
+   </definition>
+
+
+</tiles-definitions>
