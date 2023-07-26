@@ -36,7 +36,7 @@ ${param.flag=='true'?"<script>alert('탈퇴성공');</script>":""}
 		if(member !=null){
 			memberGrade = member.getMemberGrade();
 			
-			memGrade = memberGrade.equals("admin");
+			memGrade = memberGrade.equals("member");
 		}
 		
 		%>

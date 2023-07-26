@@ -47,7 +47,7 @@ ${param.flag=='true'?"<script>alert('탈퇴성공');</script>":""}
  		<td><input type="text" value="${copy.memberGrade}"/></td>
 	</tr>
 	<tr>
-		<td>
+		<td colspan="2">
 			<button type="submit">수정</button>
 		</td>
 	</tr>

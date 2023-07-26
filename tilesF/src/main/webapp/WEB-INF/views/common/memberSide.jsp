@@ -3,6 +3,8 @@
     isELIgnored="false" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="bitedu.bipa.tiles.vo.MemberVO"%>
+
 <%
   request.setCharacterEncoding("UTF-8");
 %> 
@@ -20,9 +22,33 @@
   <title>사이드 메뉴</title>
 </head>
 <body>
+     <% MemberVO member = (MemberVO)session.getAttribute("login");
+
+		String memberId ="";
+		String memberGrade = "";
+		int memberSeq = 0;
+		boolean memGrade = false;
+		boolean flag = false;
+		
+		if(member !=null){
+			memberGrade = member.getMemberGrade();
+			
+			memGrade = memberGrade.equals("admin");
+			
+			memberSeq = member.getMemberSeq();
+		}
+		
+		%>
 	<h1>사이드 메뉴</h1>
 	<h1>
-		<a href="${contextPath}/member/list.do"  class="no-underline">회원관리</a><br>
+
+          <%if(memGrade){ %>
+
+            <a href="${contextPath}/member/list.do"  class="no-underline">회원관리</a><br>
+			<% } else { %>
+			<a href="${contextPath}/member/viewUpdate.do?memberSeq=<%=memberSeq%>"  class="no-underline">회원관리</a><br>
+	        <% } %>
+
 		<a href="${contextPath}/visitor/list.do"  class="no-underline">방명록</a><br>
 	</h1>
 	 

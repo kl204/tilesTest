@@ -1,6 +1,9 @@
 package bitedu.bipa.tiles.service;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.fileupload.FileItem;
 
 import bitedu.bipa.tiles.vo.MemberVO;
 
@@ -21,5 +24,7 @@ public interface IMemeberService {
 	int removeMember(int memberId);
 
 	 ArrayList<MemberVO> selectMemberById(String id);
+
+//	MemberVO upload(List<FileItem> items) throws Exception;
 
 }

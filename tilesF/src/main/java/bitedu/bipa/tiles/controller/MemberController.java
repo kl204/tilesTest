@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -92,8 +93,6 @@ public class MemberController {
 		ModelAndView mav = null;
 		mav = new ModelAndView();
 		
-		
-		mav.addObject("data","MemberList");
 		mav.setViewName("/member/regist");
 		return mav;
 	}
@@ -141,16 +140,20 @@ public class MemberController {
 		 ArrayList<MemberVO> memberList = new  ArrayList<MemberVO>();
 			
 		 memberList = memberService.selectMemberById(id);
+		 
 		String grade ="";
+		int memSeq =0;
 		if(memberVo!=null) {
 			grade = memberList.get(0).getMemberGrade();
+			memSeq = memberList.get(0).getMemberSeq();
 		}		
 		
 		memberVo.setMemberId(id);
 		memberVo.setMemberPw(pass);
 		memberVo.setMemberGrade(grade);
+		memberVo.setMemberSeq(memSeq);
 		
-		System.out.println("(controller)id, pw, flags : " + id + " , " + pass);
+		System.out.println("(controller)memberSeq : " + memSeq);
 
 		mav.addObject("flag","true");
 		mav.addObject("id",id);
@@ -169,10 +172,10 @@ public class MemberController {
 
 	}
 	
-	//아이디 중복 검사
-	@RequestMapping(value = "/id_validation", method = RequestMethod.GET)
+	//아이디 중복 검사, restful
+	@RequestMapping(value = "/id_validation/{memberId}", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> id_validation(@RequestParam String memberId) {
+	public Map<String, Object> id_validation(@PathVariable String memberId) {
 	    Map<String, Object> response = new HashMap<String, Object>();
 	    
 	    System.out.println("(controller)memberId : " + memberId);
@@ -196,10 +199,11 @@ public class MemberController {
 		ModelAndView model = new ModelAndView();
 		
 		System.out.println("regist in");
+		System.out.println("(controller) member regist name : " + memberVo.getMemberName());
 		
-		memberService.createMember(memberVo);
+		//memberService.createMember(memberVo);
 
-		model.setViewName("/member/list");
+		model.setViewName("redirect:list.do");
 		return model;
 	}	
 	

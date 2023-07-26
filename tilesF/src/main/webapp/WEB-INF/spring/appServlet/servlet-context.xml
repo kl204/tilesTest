@@ -44,8 +44,6 @@
 				<mapping path="/member/logout.do"/>
                <mapping path="/member/list.do"/>
                <mapping path="/member/list"/>
-               <mapping path="/member/regist"/>
-              <mapping path="/member/viewRegist.do"/>
                <mapping path="/member/viewDetail.do"/>
                 <mapping path="/member/delete"/>
 				<mapping path="/member/viewUpdate.do"/>

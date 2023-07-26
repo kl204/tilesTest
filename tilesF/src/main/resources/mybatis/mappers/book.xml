@@ -42,11 +42,7 @@
 			select a.*, b.* from book_info a inner join book_copy b on a.book_isbn=b.book_isbn
 		]]>
 	</select>	
-	<select id="searchPagingBook" resultMap="bookMap" resultType="bookCopyVO">
-		<![CDATA[
-			SELECT a.*, b.* FROM book_info a inner join book_copy b on a.book_isbn=b.book_isbn ORDER BY a.book_isbn LIMIT #{end} OFFSET #{start}
-		]]>
-	</select>
+
 	<select id="selectBookBySeq" resultMap="bookMap" resultType="bookCopyVo" parameterType="java.lang.Integer">
 		<![CDATA[
 			select a.*, b.* from book_info a inner join book_copy b on a.book_isbn=b.book_isbn 
@@ -171,7 +167,7 @@
 	<!-- Id로 회원 찾기 -->
 	<select id="selectMemberMyId" resultMap="loginMap" resultType="MemberVO" parameterType="java.lang.String">
 		<![CDATA[
-			select member_grade from member_login where member_id=#{id} 
+			select * from member_login where member_id=#{id} 
 			]]>
 	</select>	
 	
